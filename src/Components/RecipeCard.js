@@ -42,7 +42,25 @@ const RecipeCard = ({
   console.log(card);
 
   const [modalEdit, setModalEdit] = useState(false);
-  const handleOpenEdit = () => setModalEdit(true);
+  const handleOpenEdit = () => {
+    // try {
+    //   const response = await axios.get(`http://localhost:1234/recipes/${id}`);
+    //   if (response.status === 200) {
+    //     console.log(response.status);
+    //     doRefresh();
+    //   }
+    // } catch (e) {
+    //   console.log("There was an error");
+    // }
+
+    setRecipe({
+      tittle: card.tittle,
+      content: card.content,
+      image: card.image,
+    });
+
+    setModalEdit(true);
+  };
   //   const handleCloseEdit = () => setModalEdit(false);
 
   const deleteHandle = async (id) => {
@@ -88,7 +106,7 @@ const RecipeCard = ({
               <Button
                 size="small"
                 color="ok"
-                onClick={() => handleOpenEdit()}
+                onClick={() => handleOpenEdit(card.id)}
                 variant="contained"
               >
                 <EditIcon />
